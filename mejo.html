@@ -1,0 +1,102 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Apurva 💗</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mejo.css">
+</head>
+
+<body>
+
+  <!-- Background Music (mobile-friendly: plays on tap) -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+
+    <!-- GIF -->
+    <div class="tenor-gif-embed"
+      data-postid="22885016"
+      data-share-method="host"
+      data-width="100%">
+      <a href="https://tenor.com/view/manja-gif-22885016">Sticker</a>
+    </div>
+    <script async src="https://tenor.com/embed.js"></script>
+
+    <h1>Hey Apurva 💕</h1>
+    <p id="text"></p>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">It’s okay Priyanshu🤍</button>
+      <button class="no" onclick="moveNo()">Still angry 😤</button>
+    </div>
+
+    <p id="promise" class="hidden">
+      I promise to listen more, care deeper, and never hurt you again 🥺💗
+    </p>
+
+    <p class="small">— your priyanshu🤍</p>
+  </div>
+
+  <script>
+    /* Typing effect */
+    const message = "I know I hurt you… and I’m truly sorry. You mean too much to me.";
+    let i = 0;
+    function typeText() {
+      if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeText, 40);
+      }
+    }
+    window.onload = typeText;
+
+    /* Move NO button (tap-based for mobile) */
+    function moveNo() {
+      const noBtn = document.querySelector('.no');
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = Math.random() * 70 + '%';
+      noBtn.style.top = Math.random() * 70 + '%';
+      vibrate();
+    }
+
+    /* YES action */
+    function sayYes() {
+      document.getElementById("promise").classList.remove("hidden");
+      playMusic();
+      vibrate();
+      createHearts();
+    }
+
+    /* Vibration */
+    function vibrate() {
+      if (navigator.vibrate) {
+        navigator.vibrate(50);
+      }
+    }
+
+    /* Play music on interaction */
+    function playMusic() {
+      document.getElementById("bgMusic").play();
+    }
+
+    /* Floating hearts */
+    function createHearts() {
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
